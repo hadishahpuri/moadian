@@ -2,54 +2,93 @@
 
 namespace SnappMarketPro\Moadian\Services;
 
-use DateTime;
 
 class InvoiceIdService
 {
-    private const CHARACTER_TO_NUMBER_CODING = [
-        'A' => 65, 'B' => 66, 'C' => 67, 'D' => 68, 'E' => 69, 'F' => 70, 'G' => 71, 'H' => 72, 'I' => 73,
-        'J' => 74, 'K' => 75, 'L' => 76, 'M' => 77, 'N' => 78, 'O' => 79, 'P' => 80, 'Q' => 81, 'R' => 82,
-        'S' => 83, 'T' => 84, 'U' => 85, 'V' => 86, 'W' => 87, 'X' => 88, 'Y' => 89, 'Z' => 90,
+    private static array $d = [
+        [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+        [1, 2, 3, 4, 0, 6, 7, 8, 9, 5],
+        [2, 3, 4, 0, 1, 7, 8, 9, 5, 6],
+        [3, 4, 0, 1, 2, 8, 9, 5, 6, 7],
+        [4, 0, 1, 2, 3, 9, 5, 6, 7, 8],
+        [5, 9, 8, 7, 6, 0, 4, 3, 2, 1],
+        [6, 5, 9, 8, 7, 1, 0, 4, 3, 2],
+        [7, 6, 5, 9, 8, 2, 1, 0, 4, 3],
+        [8, 7, 6, 5, 9, 3, 2, 1, 0, 4],
+        [9, 8, 7, 6, 5, 4, 3, 2, 1, 0],
     ];
 
-    public function __construct(private string $clientId)
+    private static array $p = [
+        [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+        [1, 5, 7, 6, 2, 8, 3, 0, 9, 4],
+        [5, 8, 0, 3, 7, 9, 6, 1, 4, 2],
+        [8, 9, 1, 6, 0, 4, 3, 5, 2, 7],
+        [9, 4, 5, 3, 1, 2, 6, 8, 7, 0],
+        [4, 2, 8, 6, 5, 7, 3, 9, 0, 1],
+        [2, 7, 9, 3, 8, 0, 6, 4, 1, 5],
+        [7, 0, 4, 6, 9, 1, 3, 2, 5, 8],
+    ];
+
+    private static array $inv = [0, 4, 3, 2, 1, 5, 6, 7, 8, 9];
+
+    public static function generateTaxId($memoryId, $createDate, $serial): string
     {
+        $timeDayRange = (int) ($createDate->getTimestamp() / (3600 * 24));
+        $hexTime = dechex($timeDayRange);
+        $hexSerial = dechex($serial);
+
+        $taxId = $memoryId . str_pad($hexTime, 5, '0', STR_PAD_LEFT) .
+            str_pad($hexSerial, 10, '0', STR_PAD_LEFT);
+
+        $controlText = self::toDecimal($memoryId) . str_pad($timeDayRange, 6, '0', STR_PAD_LEFT)
+            . str_pad($serial, 12, '0', STR_PAD_LEFT);
+        $taxId .= self::generateVerhoeff($controlText);
+
+        return strtoupper($taxId);
     }
 
-    public function generateInvoiceId(DateTime $date, int $internalInvoiceId): string
+    private static function toDecimal($memoryId): string
     {
-        $daysPastEpoch = $this->getDaysPastEpoch($date);
-        $daysPastEpochPadded = str_pad($daysPastEpoch, 6, '0', STR_PAD_LEFT);
-        $hexDaysPastEpochPadded = str_pad(dechex($daysPastEpoch), 5, '0', STR_PAD_LEFT);
-
-        $numericClientId = $this->clientIdToNumber($this->clientId);
-
-        $internalInvoiceIdPadded = str_pad($internalInvoiceId, 12, '0', STR_PAD_LEFT);
-        $hexInternalInvoiceIdPadded = str_pad(dechex($internalInvoiceId), 10, '0', STR_PAD_LEFT);
-
-        $decimalInvoiceId = $numericClientId . $daysPastEpochPadded . $internalInvoiceIdPadded;
-
-        $checksum = VerhoeffService::checkSum($decimalInvoiceId);
-
-        return strtoupper($this->clientId . $hexDaysPastEpochPadded . $hexInternalInvoiceIdPadded . $checksum);
-    }
-
-    private function getDaysPastEpoch(DateTime $date): int
-    {
-        return (int)($date->getTimestamp() / (3600 * 24));
-    }
-
-    private function clientIdToNumber(string $clientId): string
-    {
-        $result = '';
-        foreach (str_split($clientId) as $char) {
-            if (is_numeric($char)) {
-                $result .= $char;
+        $decimalFormat = '';
+        for ($i = 0; $i < strlen($memoryId); $i++) {
+            if (is_numeric($memoryId[$i])) {
+                $decimalFormat .= $memoryId[$i];
             } else {
-                $result .= self::CHARACTER_TO_NUMBER_CODING[$char];
+                $decimalFormat .= ord($memoryId[$i]);
             }
         }
+        return $decimalFormat;
+    }
 
-        return $result;
+    public static function generateVerhoeff($num): string
+    {
+        $c = 0;
+        $myArray = self::stringToReversedIntArray($num);
+
+        for ($i = 0; $i < count($myArray); $i++) {
+            $c = self::$d[$c][self::$p[($i + 1) % 8][$myArray[$i]]];
+        }
+
+        return strval(self::$inv[$c]);
+    }
+
+    private static function stringToReversedIntArray($num): array
+    {
+        $myArray = [];
+        for ($i = 0; $i < strlen($num); $i++) {
+            $myArray[$i] = intval(substr($num, $i, 1));
+        }
+
+        return self::reverse($myArray);
+    }
+
+    private static function reverse($myArray): array
+    {
+        $reversed = [];
+        for ($i = 0; $i < count($myArray); $i++) {
+            $reversed[$i] = $myArray[count($myArray) - ($i + 1)];
+        }
+
+        return $reversed;
     }
 }

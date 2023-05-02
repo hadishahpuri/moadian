@@ -159,8 +159,8 @@ class Packet
             'dataSignature' => $this->dataSignature,
         ];
 
-        if ($this->signatureKeyId) {
-            $array['signatureKeyId'] = $this->signatureKeyId;
-        }
+//        if ($this->signatureKeyId) {
+//            $array['signatureKeyId'] = $this->signatureKeyId;
+//        }
     }
 }

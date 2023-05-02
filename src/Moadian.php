@@ -72,11 +72,22 @@ class Moadian
         return $api->getToken();
     }
 
+    public function getServerInformation()
+    {
+        $signatureService = new SignatureService($this->privateKey);
+
+        $encryptionService = new EncryptionService($this->orgKeyId, null);
+
+        $httpClient = new HttpClient($this->baseURL, $signatureService, $encryptionService);
+
+        $api = new Api($this->username, $httpClient);
+
+        return $api->getServerInformation();
+    }
+
     public function generateTaxId(DateTime $invoiceCreatedAt, $internalInvoiceId): string
     {
-        $invoiceIdService = new InvoiceIdService($this->username);
-
-        return $invoiceIdService->generateInvoiceId($invoiceCreatedAt, $internalInvoiceId);
+        return InvoiceIdService::generateTaxId($this->username, $invoiceCreatedAt, $internalInvoiceId);
     }
 
     public function inquiryByReferenceNumber(string $referenceNumber)

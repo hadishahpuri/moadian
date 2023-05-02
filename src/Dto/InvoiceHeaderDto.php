@@ -7,510 +7,510 @@ class InvoiceHeaderDto extends PrimitiveDto
     /**
      * unique tax ID (should be generated using InvoiceIdService)
      */
-    private string $taxid;
+    private $taxid;
 
     /**
      * invoice timestamp (milliseconds from epoch)
      */
-    private int $indatim;
+    private $indatim;
 
     /**
      * invoice creation timestamp (milliseconds from epoch)
      */
-    private int $indati2m;
+    private $indati2m;
 
     /**
      * invoice type
      */
-    private int $inty;
+    private $inty;
 
     /**
-     * internal invoice number
+     * stringernal invoice number
      */
-    private ?string $inno = null;
+    private $inno = null;
 
     /**
      * invoice reference tax ID
      */
-    private ?string $irtaxid;
+    private $irtaxid;
 
     /**
      * invoice pattern
      */
-    private int $inp;
+    private $inp;
 
     /**
      * invoice subject
      */
-    private int $ins;
+    private $ins;
 
     /**
      * seller tax identification number
      */
-    private string $tins;
+    private $tins;
 
     /**
      * type of buyer
      */
-    private ?int $tob;
+    private $tob;
 
     /**
      * buyer ID
      */
-    private ?string $bid;
+    private $bid;
 
     /**
      * buyer tax identification number
      */
-    private ?string $tinb;
+    private $tinb;
 
     /**
      * seller branch code
      */
-    private ?string $sbc;
+    private $sbc;
 
     /**
      * buyer postal code
      */
-    private ?string $bpc;
+    private $bpc;
 
     /**
      * buyer branch code
      */
-    private ?string $bbc;
+    private $bbc;
 
     /**
      * flight type
      */
-    private ?int $ft;
+    private $ft;
 
     /**
      * buyer passport number
      */
-    private ?string $bpn;
+    private $bpn;
 
     /**
      * seller customs licence number
      */
-    private ?int $scln;
+    private $scln;
 
     /**
      * seller customs code
      */
-    private ?string $scc;
+    private $scc;
 
     /**
      * contract registration number
      */
-    private ?int $crn;
+    private $crn;
 
     /**
      * billing ID
      */
-    private ?string $billid;
+    private $billid;
 
     /**
      * total pre discount
      */
-    private int $tprdis;
+    private  $tprdis;
 
     /**
      * total discount
      */
-    private int $tdis;
+    private  $tdis;
 
     /**
      * total after discount
      */
-    private int $tadis;
+    private  $tadis;
 
     /**
      * total VAT amount
      */
-    private int $tvam;
+    private  $tvam;
 
     /**
      * total other duty amount
      */
-    private int $todam;
+    private  $todam;
 
     /**
      * total bill
      */
-    private int $tbill;
+    private  $tbill;
 
     /**
      * settlement type
      */
-    private ?int $setm;
+    private $setm;
 
     /**
      * cash payment
      */
-    private ?int $cap;
+    private $cap;
 
     /**
      * installment payment
      */
-    private ?int $insp;
+    private $insp;
 
     /**
      * total VAT of payment
      */
-    private ?string $tvop;
+    private $tvop;
 
     /**
      * tax17
      */
-    private int $tax17;
+    private  $tax17;
 
-    public function getTaxid(): string
+    public function getTaxid()
     {
         return $this->taxid;
     }
 
-    public function setTaxid(string $taxid): self
+    public function setTaxid($taxid): self
     {
         $this->taxid = $taxid;
         return $this;
     }
 
-    public function getIndatim(): int
+    public function getIndatim()
     {
         return $this->indatim;
     }
 
-    public function setIndatim(int $indatim): self
+    public function setIndatim($indatim): self
     {
         $this->indatim = $indatim;
         return $this;
     }
 
-    public function getIndati2m(): int
+    public function getIndati2m()
     {
         return $this->indati2m;
     }
 
-    public function setIndati2m(int $indati2m): self
+    public function setIndati2m($indati2m): self
     {
         $this->indati2m = $indati2m;
         return $this;
     }
 
-    public function getInty(): int
+    public function getInty()
     {
         return $this->inty;
     }
 
-    public function setInty(int $inty): self
+    public function setInty($inty): self
     {
         $this->inty = $inty;
         return $this;
     }
 
-    public function getInno(): ?string
+    public function getInno()
     {
         return $this->inno;
     }
 
-    public function setInno(?string $inno): self
+    public function setInno($inno): self
     {
         $this->inno = $inno;
         return $this;
     }
 
-    public function getIrtaxid(): ?string
+    public function getIrtaxid()
     {
         return $this->irtaxid;
     }
 
-    public function setIrtaxid(?string $irtaxid): self
+    public function setIrtaxid($irtaxid): self
     {
         $this->irtaxid = $irtaxid;
         return $this;
     }
 
-    public function getInp(): int
+    public function getInp()
     {
         return $this->inp;
     }
 
-    public function setInp(int $inp): self
+    public function setInp($inp): self
     {
         $this->inp = $inp;
         return $this;
     }
 
-    public function getIns(): int
+    public function getIns()
     {
         return $this->ins;
     }
 
-    public function setIns(int $ins): self
+    public function setIns($ins): self
     {
         $this->ins = $ins;
         return $this;
     }
 
-    public function getTins(): string
+    public function getTins()
     {
         return $this->tins;
     }
 
-    public function setTins(string $tins): self
+    public function setTins($tins): self
     {
         $this->tins = $tins;
         return $this;
     }
 
-    public function getTob(): ?int
+    public function getTob()
     {
         return $this->tob;
     }
 
-    public function setTob(?int $tob): self
+    public function setTob($tob): self
     {
         $this->tob = $tob;
         return $this;
     }
 
-    public function getBid(): ?string
+    public function getBid()
     {
         return $this->bid;
     }
 
-    public function setBid(?string $bid): self
+    public function setBid($bid): self
     {
         $this->bid = $bid;
         return $this;
     }
 
-    public function getTinb(): ?string
+    public function getTinb()
     {
         return $this->tinb;
     }
 
-    public function setTinb(?string $tinb): self
+    public function setTinb($tinb): self
     {
         $this->tinb = $tinb;
         return $this;
     }
 
-    public function getSbc(): ?string
+    public function getSbc()
     {
         return $this->sbc;
     }
 
-    public function setSbc(?string $sbc): self
+    public function setSbc($sbc): self
     {
         $this->sbc = $sbc;
         return $this;
     }
 
-    public function getBpc(): ?string
+    public function getBpc()
     {
         return $this->bpc;
     }
 
-    public function setBpc(?string $bpc): self
+    public function setBpc($bpc): self
     {
         $this->bpc = $bpc;
         return $this;
     }
 
-    public function getBbc(): ?string
+    public function getBbc()
     {
         return $this->bbc;
     }
 
-    public function setBbc(?string $bbc): self
+    public function setBbc($bbc): self
     {
         $this->bbc = $bbc;
         return $this;
     }
 
-    public function getFt(): ?int
+    public function getFt()
     {
         return $this->ft;
     }
 
-    public function setFt(?int $ft): self
+    public function setFt($ft): self
     {
         $this->ft = $ft;
         return $this;
     }
 
-    public function getBpn(): ?string
+    public function getBpn()
     {
         return $this->bpn;
     }
 
-    public function setBpn(?string $bpn): self
+    public function setBpn($bpn): self
     {
         $this->bpn = $bpn;
         return $this;
     }
 
-    public function getScln(): ?int
+    public function getScln()
     {
         return $this->scln;
     }
 
-    public function setScln(?int $scln): self
+    public function setScln($scln): self
     {
         $this->scln = $scln;
         return $this;
     }
 
-    public function getScc(): ?string
+    public function getScc()
     {
         return $this->scc;
     }
 
-    public function setScc(?string $scc): self
+    public function setScc($scc): self
     {
         $this->scc = $scc;
         return $this;
     }
 
-    public function getCrn(): ?int
+    public function getCrn()
     {
         return $this->crn;
     }
 
-    public function setCrn(?int $crn): self
+    public function setCrn($crn): self
     {
         $this->crn = $crn;
         return $this;
     }
 
-    public function getBillid(): ?string
+    public function getBillid()
     {
         return $this->billid;
     }
 
-    public function setBillid(?string $billid): self
+    public function setBillid($billid): self
     {
         $this->billid = $billid;
         return $this;
     }
 
-    public function getTprdis(): int
+    public function getTprdis()
     {
         return $this->tprdis;
     }
 
-    public function setTprdis(int $tprdis): self
+    public function setTprdis($tprdis): self
     {
         $this->tprdis = $tprdis;
         return $this;
     }
 
-    public function getTdis(): int
+    public function getTdis()
     {
         return $this->tdis;
     }
 
-    public function setTdis(int $tdis): self
+    public function setTdis($tdis): self
     {
         $this->tdis = $tdis;
         return $this;
     }
 
-    public function getTadis(): int
+    public function getTadis()
     {
         return $this->tadis;
     }
 
-    public function setTadis(int $tadis): self
+    public function setTadis($tadis): self
     {
         $this->tadis = $tadis;
         return $this;
     }
 
-    public function getTvam(): int
+    public function getTvam()
     {
         return $this->tvam;
     }
 
-    public function setTvam(int $tvam): self
+    public function setTvam($tvam): self
     {
         $this->tvam = $tvam;
         return $this;
     }
 
-    public function getTodam(): int
+    public function getTodam()
     {
         return $this->todam;
     }
 
-    public function setTodam(int $todam): self
+    public function setTodam($todam): self
     {
         $this->todam = $todam;
         return $this;
     }
 
-    public function getTbill(): int
+    public function getTbill()
     {
         return $this->tbill;
     }
 
-    public function setTbill(int $tbill): self
+    public function setTbill($tbill): self
     {
         $this->tbill = $tbill;
         return $this;
     }
 
-    public function getSetm(): ?int
+    public function getSetm()
     {
         return $this->setm;
     }
 
-    public function setSetm(?int $setm): self
+    public function setSetm($setm): self
     {
         $this->setm = $setm;
         return $this;
     }
 
-    public function getCap(): ?int
+    public function getCap()
     {
         return $this->cap;
     }
 
-    public function setCap(?int $cap): self
+    public function setCap($cap): self
     {
         $this->cap = $cap;
         return $this;
     }
 
-    public function getInsp(): ?int
+    public function getInsp()
     {
         return $this->insp;
     }
 
-    public function setInsp(?int $insp): self
+    public function setInsp($insp): self
     {
         $this->insp = $insp;
         return $this;
     }
 
-    public function getTvop(): ?string
+    public function getTvop()
     {
         return $this->tvop;
     }
 
-    public function setTvop(?string $tvop): self
+    public function setTvop($tvop): self
     {
         $this->tvop = $tvop;
         return $this;
     }
 
-    public function getTax17(): int
+    public function getTax17()
     {
         return $this->tax17;
     }
 
-    public function setTax17(int $tax17): self
+    public function setTax17($tax17): self
     {
         $this->tax17 = $tax17;
         return $this;

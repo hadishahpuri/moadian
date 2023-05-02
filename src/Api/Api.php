@@ -39,6 +39,25 @@ class Api
         return new Token($response['result']['data']['token'], $response['result']['data']['expiresIn']);
     }
 
+    /**
+     * @throws GuzzleException
+     */
+    public function getServerInformation()
+    {
+        $packet = new Packet(PacketType::GET_SERVER_INFORMATION, new GetTokenDto($this->username));
+
+        $packet->setRetry(false);
+        $packet->setFiscalId($this->username);
+
+        $headers = $this->getEssentialHeaders();
+
+        $path = 'req/api/self-tsp/sync/' . PacketType::GET_SERVER_INFORMATION;
+
+        $response = $this->httpClient->sendPacket($path, $packet, $headers);
+
+        return $response;
+    }
+
 
     public function inquiryByReferenceNumber(string $referenceNumber)
     {
@@ -57,7 +76,7 @@ class Api
         return $this->httpClient->sendPacket($path, $packet, $headers);
 
     }
-    
+
     public function getEconomicCodeInformation(string $taxID)
     {
         $this->requireToken();

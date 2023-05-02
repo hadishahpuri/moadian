@@ -7,430 +7,430 @@ class InvoiceBodyDto extends PrimitiveDto
     /**
      * service stuff ID
      */
-    private ?string $sstid;
+    private $sstid;
 
     /**
      * service stuff title
      */
-    private string $sstt;
+    private $sstt;
 
     /**
      * amount
      */
-    private int $am;
+    private $am;
 
     /**
      * measurement unit
      */
-    private string $mu;
+    private $mu;
 
     /**
      * fee (pure price per item)
      */
-    private int $fee;
+    private $fee;
 
     /**
      * fee in foreign currency
      */
-    private ?float $cfee;
+    private $cfee;
 
     /**
      * currency type
      */
-    private ?string $cut;
+    private $cut;
 
     /**
      * exchange rate
      */
-    private ?int $exr;
+    private $exr;
 
     /**
      * pre discount
      */
-    private int $prdis;
+    private $prdis;
 
     /**
      * discount
      */
-    private int $dis;
+    private $dis;
 
     /**
      * after discount
      */
-    private int $adis;
+    private $adis;
 
     /**
      * VAT rate
      */
-    private int $vra;
+    private $vra;
 
     /**
      * VAT amount
      */
-    private int $vam;
+    private $vam;
 
     /**
      * over duty title
      */
-    private ?string $odt;
+    private $odt;
 
     /**
      * over duty rate
      */
-    private ?float $odr;
+    private $odr;
 
     /**
      * over duty amount
      */
-    private ?int $odam;
+    private $odam;
 
     /**
      * other legal title
      */
-    private ?string $olt;
+    private $olt;
 
     /**
      * other legal rate
      */
-    private ?float $olr;
+    private $olr;
 
     /**
      * other legal amount
      */
-    private ?int $olam;
+    private $olam;
 
     /**
      * construction fee
      */
-    private ?int $consfee;
+    private $consfee;
 
     /**
      * seller profit
      */
-    private ?int $spro;
+    private $spro;
 
     /**
      * broker salary
      */
-    private ?int $bros;
+    private $bros;
 
     /**
      * total construction profit broker salary
      */
-    private ?int $tcpbs;
+    private $tcpbs;
 
     /**
      * cash share of payment
      */
-    private ?int $cop;
+    private $cop;
 
     /**
      * vat of payment
      */
-    private ?string $vop;
+    private $vop;
 
     /**
      * buyer register number
      */
-    private ?string $bsrn;
+    private $bsrn;
 
     /**
      * total service stuff amount
      */
-    private int $tsstam;
+    private $tsstam;
 
-    public function getSstid(): ?string
+    public function getSstid()
     {
         return $this->sstid;
     }
 
-    public function setSstid(?string $sstid): self
+    public function setSstid($sstid): self
     {
         $this->sstid = $sstid;
         return $this;
     }
 
-    public function getSstt(): string
+    public function getSstt()
     {
         return $this->sstt;
     }
 
-    public function setSstt(string $sstt): self
+    public function setSstt($sstt): self
     {
         $this->sstt = $sstt;
         return $this;
     }
 
-    public function getAm(): int
+    public function getAm()
     {
         return $this->am;
     }
 
-    public function setAm(int $am): self
+    public function setAm($am): self
     {
         $this->am = $am;
         return $this;
     }
 
-    public function getMu(): string
+    public function getMu()
     {
         return $this->mu;
     }
 
-    public function setMu(string $mu): self
+    public function setMu($mu): self
     {
         $this->mu = $mu;
         return $this;
     }
 
-    public function getFee(): int
+    public function getFee()
     {
         return $this->fee;
     }
 
-    public function setFee(int $fee): self
+    public function setFee($fee): self
     {
         $this->fee = $fee;
         return $this;
     }
 
-    public function getCfee(): ?float
+    public function getCfee()
     {
         return $this->cfee;
     }
 
-    public function setCfee(?float $cfee): self
+    public function setCfee($cfee): self
     {
         $this->cfee = $cfee;
         return $this;
     }
 
-    public function getCut(): ?string
+    public function getCut()
     {
         return $this->cut;
     }
 
-    public function setCut(?string $cut): self
+    public function setCut($cut): self
     {
         $this->cut = $cut;
         return $this;
     }
 
-    public function getExr(): ?int
+    public function getExr()
     {
         return $this->exr;
     }
 
-    public function setExr(?int $exr): self
+    public function setExr($exr): self
     {
         $this->exr = $exr;
         return $this;
     }
 
-    public function getPrdis(): int
+    public function getPrdis()
     {
         return $this->prdis;
     }
 
-    public function setPrdis(int $prdis): self
+    public function setPrdis($prdis): self
     {
         $this->prdis = $prdis;
         return $this;
     }
 
-    public function getDis(): int
+    public function getDis()
     {
         return $this->dis;
     }
 
-    public function setDis(int $dis): self
+    public function setDis($dis): self
     {
         $this->dis = $dis;
         return $this;
     }
 
-    public function getAdis(): int
+    public function getAdis()
     {
         return $this->adis;
     }
 
-    public function setAdis(int $adis): self
+    public function setAdis($adis): self
     {
         $this->adis = $adis;
         return $this;
     }
 
-    public function getVra(): int
+    public function getVra()
     {
         return $this->vra;
     }
 
-    public function setVra(int $vra): self
+    public function setVra($vra): self
     {
         $this->vra = $vra;
         return $this;
     }
 
-    public function getVam(): int
+    public function getVam()
     {
         return $this->vam;
     }
 
-    public function setVam(int $vam): self
+    public function setVam($vam): self
     {
         $this->vam = $vam;
         return $this;
     }
 
-    public function getOdt(): ?string
+    public function getOdt()
     {
         return $this->odt;
     }
 
-    public function setOdt(?string $odt): self
+    public function setOdt($odt): self
     {
         $this->odt = $odt;
         return $this;
     }
 
-    public function getOdr(): ?float
+    public function getOdr()
     {
         return $this->odr;
     }
 
-    public function setOdr(?float $odr): self
+    public function setOdr($odr): self
     {
         $this->odr = $odr;
         return $this;
     }
 
-    public function getOdam(): ?int
+    public function getOdam()
     {
         return $this->odam;
     }
 
-    public function setOdam(?int $odam): self
+    public function setOdam($odam): self
     {
         $this->odam = $odam;
         return $this;
     }
 
-    public function getOlt(): ?string
+    public function getOlt()
     {
         return $this->olt;
     }
 
-    public function setOlt(?string $olt): self
+    public function setOlt($olt): self
     {
         $this->olt = $olt;
         return $this;
     }
 
-    public function getOlr(): ?int
+    public function getOlr()
     {
         return $this->olr;
     }
 
-    public function setOlr(?float $olr): self
+    public function setOlr($olr): self
     {
         $this->olr = $olr;
         return $this;
     }
 
-    public function getOlam(): ?float
+    public function getOlam()
     {
         return $this->olam;
     }
 
-    public function setOlam(?int $olam): self
+    public function setOlam($olam): self
     {
         $this->olam = $olam;
         return $this;
     }
 
-    public function getConsfee(): ?int
+    public function getConsfee()
     {
         return $this->consfee;
     }
 
-    public function setConsfee(?int $consfee): self
+    public function setConsfee($consfee): self
     {
         $this->consfee = $consfee;
         return $this;
     }
 
-    public function getSpro(): ?int
+    public function getSpro()
     {
         return $this->spro;
     }
 
-    public function setSpro(?int $spro): self
+    public function setSpro($spro): self
     {
         $this->spro = $spro;
         return $this;
     }
 
-    public function getBros(): ?int
+    public function getBros()
     {
         return $this->bros;
     }
 
-    public function setBros(?int $bros): self
+    public function setBros($bros): self
     {
         $this->bros = $bros;
         return $this;
     }
 
-    public function getTcpbs(): ?int
+    public function getTcpbs()
     {
         return $this->tcpbs;
     }
 
-    public function setTcpbs(?int $tcpbs): self
+    public function setTcpbs($tcpbs): self
     {
         $this->tcpbs = $tcpbs;
         return $this;
     }
 
-    public function getCop(): ?int
+    public function getCop()
     {
         return $this->cop;
     }
 
-    public function setCop(?int $cop): self
+    public function setCop($cop): self
     {
         $this->cop = $cop;
         return $this;
     }
 
-    public function getVop(): ?string
+    public function getVop()
     {
         return $this->vop;
     }
 
-    public function setVop(?string $vop): self
+    public function setVop($vop): self
     {
         $this->vop = $vop;
         return $this;
     }
 
-    public function getBsrn(): ?string
+    public function getBsrn()
     {
         return $this->bsrn;
     }
 
-    public function setBsrn(?string $bsrn): self
+    public function setBsrn($bsrn): self
     {
         $this->bsrn = $bsrn;
         return $this;
     }
 
-    public function getTsstam(): int
+    public function getTsstam()
     {
         return $this->tsstam;
     }
 
-    public function setTsstam(int $tsstam): self
+    public function setTsstam($tsstam): self
     {
         $this->tsstam = $tsstam;
         return $this;
